@@ -1,32 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Head v-if="$route.name != 'singerInfo'"></Head>
+    <Nav v-if="$route.name != 'singerInfo'"></Nav>
+    <router-view></router-view>
+    <play-song ref="playbottom"></play-song>
   </div>
 </template>
 
+<script>
+import Head from "components/head/head.vue";
+import Nav from "views/nav.vue";
+import playSong from "components/playSong/playSong.vue";
+
+export default {
+  components: {
+    Nav,
+    Head,
+    playSong,
+  },
+};
+</script>
+
 <style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+* {
+  font-size: 1.0625rem;
 }
 </style>
